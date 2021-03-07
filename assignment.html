@@ -1,0 +1,116 @@
+<html> <head> <style> .kutu{display:flex; flex-wrap:wrap;} .kutu div{margin:50px;} </style> </head>
+	
+<body class="kutu"> 
+<div>
+	<canvas  id="glcanvas" width="900" height="900"></canvas>
+</div>
+
+<div>
+
+
+<h1> MEHMET AFACAN 17290073</h1>
+
+<button style="height:80px;width:350px; "id = "refresh_page">
+<h1>START OVER</h1>
+</button>
+<h1 style ="color:red; font-size:70;">USE ARROW KEYS FOR MOVEMENT </h1>	
+
+
+
+
+<input id = "ClockwiseButton" type="image" style="height:50px;width:50px;" src="clockwise.png"> 
+<h1> ↩ Rotate Clockwise<h1>
+</input>
+
+<input id = "CounterClockwiseButton" type="image" style="height:50px;width:50px;" src="counter_clockwise.png" >
+<h1> ↪ Rotate Counter Clockwise<h1>
+</input>
+
+
+<span style="white-space: pre-line">
+</span>
+
+<input id = "zoom_in" type="image" style="height:50px;width:50px;" src="zoom_in.png" >
+<h1>🔎zoom in <h1>
+</input>
+
+<input id = "zoom_out" type="image" style="height:50px;width:50px;" src="zoom_out.png"> 
+<h1>🔍zoom out<h1>
+</input>
+
+<h1>OR YOU CAN USE MOUSE <span style ="font-size:100"> 🖱 </span> WHEEL TO ZOOM IN AND ZOOM OUT</h1>
+
+
+
+
+
+<pre>
+
+</pre>
+
+<H1>COLOR OF LETTERS</h1>
+<div>
+0 <input id="slider0" style="height:50px;width:300px;" class="slider "type="range" "
+min="0" max="1" step="0.1" value="0" />
+RED </div>
+
+<div>
+0 <input id="slider1" style="height:50px;width:300px;" class="slider "type="range" "
+min="0" max="1" step="0.1" value="0" />
+GREEN </div>
+
+<div>
+0 <input id="slider2" style="height:50px;width:300px;" class="slider "type="range" "
+min="0" max="1" step="0.1" value="0" />
+BLUE </div>
+
+<div>
+0 <input id="slider3" style="height:50px;width:300px;" class="slider "type="range" "
+min="0" max="1" step="0.1" value="1" />
+SATURATION </div>
+</div>
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+	attribute vec4 vPosition;
+	
+	uniform vec4 scaling;
+	uniform vec4 translation;
+	uniform float theta;
+	
+	void main()
+	{
+	
+
+	
+		vec4 scaledPosition = vec4 (
+		cos(theta) * vPosition.x - sin(theta) * vPosition.y,
+		sin(theta) * vPosition.x + cos(theta) * vPosition.y,
+		0.0,
+		1.0);
+
+		scaledPosition = scaledPosition + translation;
+		gl_Position = scaledPosition * scaling;
+
+
+		
+	}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-
+fragment">
+	precision mediump float;
+	uniform vec4 my_color;
+	void main() 
+	{
+		gl_FragColor = my_color;
+	}
+</script>
+
+<script src="MV.js"></script>
+<script src="initShaders.js"></script>
+<script src="assignment.js"></script>
+<script src="webgl-utils.js"></script>
+
+</body>
+</html>
